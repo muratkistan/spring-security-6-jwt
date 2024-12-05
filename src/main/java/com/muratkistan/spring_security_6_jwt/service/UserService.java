@@ -1,5 +1,6 @@
 package com.muratkistan.spring_security_6_jwt.service;
 
+import com.muratkistan.spring_security_6_jwt.exception.NotUniqueUsernameException;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -8,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.muratkistan.spring_security_6_jwt.dto.AuthenticationRequest;
 import com.muratkistan.spring_security_6_jwt.dto.RegisterRequest;
-import com.muratkistan.spring_security_6_jwt.exception.CustomException;
 import com.muratkistan.spring_security_6_jwt.model.User;
 import com.muratkistan.spring_security_6_jwt.repository.UserRepository;
 import com.muratkistan.spring_security_6_jwt.security.AuthenticationResponse;
@@ -40,7 +40,7 @@ public class UserService {
                                         .accessToken(jwtToken)
                                         .build();
                 } else {
-                        throw new CustomException("Username is already in use", HttpStatus.UNPROCESSABLE_ENTITY);
+                        throw new NotUniqueUsernameException("Username is already in use");
                 }
         }
 
