@@ -40,7 +40,7 @@ public class UserService {
                                         .accessToken(jwtToken)
                                         .build();
                 } else {
-                        throw new NotUniqueUsernameException("Username is already in use");
+                        throw new NotUniqueUsernameException();
                 }
         }
 

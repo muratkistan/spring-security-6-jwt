@@ -10,12 +10,14 @@ import java.util.Map;
 public class NotUniqueUsernameException extends RuntimeException {
 
 
-    public NotUniqueUsernameException(String message) {
-        super(message);
+
+    public NotUniqueUsernameException() {
+        super(Messages.getMessageForLocale("app.error.validation", LocaleContextHolder.getLocale()));
     }
 
+
     public Map<String, String> getValidationErrors(){
-        return Collections.singletonMap("email", Messages.getMessageForLocale("app.constraint.username.notunique", LocaleContextHolder.getLocale()));
+        return Collections.singletonMap("username", Messages.getMessageForLocale("app.constraint.username.notunique", LocaleContextHolder.getLocale()));
     }
 
 
