@@ -1,7 +1,7 @@
 package com.muratkistan.spring_security_6_jwt.security.token;
 
 import java.security.Key;
-import java.sql.Date;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -73,7 +73,7 @@ public class TokenProvider {
     }
 
     private Date extractExpiration(String token) {
-        return (Date) extractClaim(token, Claims::getExpiration);
+        return  extractClaim(token, Claims::getExpiration);
     }
 
     private Claims extractAllClaims(String token) {
